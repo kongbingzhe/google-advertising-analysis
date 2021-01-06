@@ -1,0 +1,45 @@
+{
+  "name": "Automatically Report 1688 Info",
+  "version": "1.0.4",
+  "manifest_version": 2,
+  "description": "Automatically identify and report 1688 information to the server for internal use and prohibit outflow. Last updated at 5/26/2020.",
+  "icons": {
+    "16": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon.png",
+    "default_title": "ARI 1.0.4"
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "webNavigation",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.google.com/search?*"
+      ],
+      "js": [
+        "scripts/content.js",
+        "scripts/Library/jquery-3.4.1.min.js"
+      ],
+      "css": ["styles/content.min.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
